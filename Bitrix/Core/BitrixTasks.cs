@@ -8,12 +8,10 @@ namespace Bitrix.Core
 {
     public class BitrixTasks
     {
-        public Result result { get; set; }
-       // public int total { get; set; }
-       // public Time time { get; set; }
+        public ResultTasks result { get; set; }
     }
 
-    public class Result
+    public class ResultTasks
     {
         public Task[] tasks { get; set; }
     }
@@ -23,14 +21,4 @@ namespace Bitrix.Core
         public string title { get; set; }
         public string id { get; set; }
     }
-
-    //public class Time
-    //{
-    //    public float start { get; set; }
-    //    public float finish { get; set; }
-    //    public float duration { get; set; }
-    //    public float processing { get; set; }
-    //    public DateTime date_start { get; set; }
-    //    public DateTime date_finish { get; set; }
-    //}
 }

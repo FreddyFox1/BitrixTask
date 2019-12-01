@@ -28,26 +28,50 @@ namespace Bitrix
         //Button start
         private void butStartResponse_Click(object sender, EventArgs e)
         {
-            var Data = bitrix.SendRequest(tbUserID.Text, tbSecretKey.Text, "tasks.task.list", "select=TITLE&ID");
-            label3.Text = "Длина: " + Data.Length;
+            var Data = bitrix.SendRequest(
+                tbUserID.Text,
+                tbSecretKey.Text,
+                "tasks.task.list",
+                "limit=100"
+                //"select=TITLE&ID&limit=100"
+                );
             tbResult.Text = Data;
-            ParseJson(Data);
+            GetTaskList(Data);
         }
 
 
-        //Parser response
-        void ParseJson(string Data)
+        //Parse JSON for get TaskList Bitrix
+        void GetTaskList(string Data)
         {
-
             string s = "";
             var Temp = JsonConvert.DeserializeObject<BitrixTasks>(Data);
             string[] TaskList = new string[Temp.result.tasks.Length];
             for (int i = 0; i < Temp.result.tasks.Length; i++)
             {
-                s += Temp.result.tasks[i].id + Temp.result.tasks[i].title + "\n";
-                tbOutResult.Text = s;
+                
                 TaskList[i] = Temp.result.tasks[i].id;
+                listBox1.Items.Add(Temp.result.tasks[i].id + " " + Temp.result.tasks[i].title);
             }
+
+            //tbOutResult.Text = s;
+            label4.Text = "Кол-во задач: " + listBox1.Items.Count.ToString();
+        }
+
+        private void _ButGetComments_Click(object sender, EventArgs e)
+        {
+            GetComments();
+        }
+
+        void GetComments()
+        {
+            //for (int i = 0; i < TaskList.Length; i++)
+            //    var Data = bitrix.SendRequest(
+            //        tbUserID.Text,
+            //        tbSecretKey.Text,
+            //        "task.commentitem.getlist",
+            //        $"ID{TaskList[i]}"
+            //        );
+
         }
     }
 
