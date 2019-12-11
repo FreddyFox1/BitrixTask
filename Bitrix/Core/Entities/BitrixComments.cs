@@ -9,19 +9,21 @@ namespace Bitrix.Core
 
     public class BitrixComments
     {
-        public ResultComment[] result { get; set; }
-        //public Time time { get; set; }
+        public Result[] result { get; set; }
+        public Time time { get; set; }
     }
-    //public class Time
-    //{
-    //    public float start { get; set; }
-    //    public float finish { get; set; }
-    //    public float duration { get; set; }
-    //    public float processing { get; set; }
-    //    public DateTime date_start { get; set; }
-    //    public DateTime date_finish { get; set; }
-    //}
-    public class ResultComment
+
+    public class Time
+    {
+        public float start { get; set; }
+        public float finish { get; set; }
+        public float duration { get; set; }
+        public float processing { get; set; }
+        public DateTime date_start { get; set; }
+        public DateTime date_finish { get; set; }
+    }
+
+    public class Result
     {
         public string POST_MESSAGE_HTML { get; set; }
         public string ID { get; set; }
@@ -32,5 +34,5 @@ namespace Bitrix.Core
         public string POST_MESSAGE { get; set; }
     }
 
-}
 
+}

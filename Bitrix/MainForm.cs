@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Globalization;
-
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -11,8 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bitrix.Core;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 
 namespace Bitrix
@@ -21,6 +17,8 @@ namespace Bitrix
     {
 
         BitrixAPI bitrix = new BitrixAPI();
+        public string[] TaskList { get; set; }
+        public string[] CommentsList { get; set; }
         public MainForm()
         {
             InitializeComponent();
@@ -28,50 +26,26 @@ namespace Bitrix
         //Button start
         private void butStartResponse_Click(object sender, EventArgs e)
         {
-            var Data = bitrix.SendRequest(
-                tbUserID.Text,
-                tbSecretKey.Text,
-                "tasks.task.list",
-                "limit=100"
-                //"select=TITLE&ID&limit=100"
-                );
+            var Data = bitrix.SendRequest(tbUserID.Text, tbSecretKey.Text, "tasks.task.list", "select=TITLE&ID");
             tbResult.Text = Data;
-            GetTaskList(Data);
+            TaskList = BitrixCore.GetTaskList(Data);
+            listBox1.Items.AddRange(TaskList);
+            label4.Text = "Count tasks: " + listBox1.Items.Count;
         }
 
 
-        //Parse JSON for get TaskList Bitrix
-        void GetTaskList(string Data)
-        {
-            string s = "";
-            var Temp = JsonConvert.DeserializeObject<BitrixTasks>(Data);
-            string[] TaskList = new string[Temp.result.tasks.Length];
-            for (int i = 0; i < Temp.result.tasks.Length; i++)
-            {
-                
-                TaskList[i] = Temp.result.tasks[i].id;
-                listBox1.Items.Add(Temp.result.tasks[i].id + " " + Temp.result.tasks[i].title);
-            }
-
-            //tbOutResult.Text = s;
-            label4.Text = "Кол-во задач: " + listBox1.Items.Count.ToString();
-        }
 
         private void _ButGetComments_Click(object sender, EventArgs e)
         {
-            GetComments();
+            //listBox2.Items.AddRange(BitrixCore.GetComments(tbUserID.Text, tbSecretKey.Text, TaskList));
+            var a = BitrixCore.GetComments(tbUserID.Text, tbSecretKey.Text, 7);
+            CommentsList = a;
+            listBox2.Items.AddRange(a);
         }
 
-        void GetComments()
+        private void SendComments_Click(object sender, EventArgs e)
         {
-            //for (int i = 0; i < TaskList.Length; i++)
-            //    var Data = bitrix.SendRequest(
-            //        tbUserID.Text,
-            //        tbSecretKey.Text,
-            //        "task.commentitem.getlist",
-            //        $"ID{TaskList[i]}"
-            //        );
-
+            BitrixCore.SendComments(tbUserID.Text, tbSecretKey.Text, 21, CommentsList);
         }
     }
 
