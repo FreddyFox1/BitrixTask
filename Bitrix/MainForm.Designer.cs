@@ -69,7 +69,7 @@
             this.butStartResponse.TabIndex = 1;
             this.butStartResponse.Text = "Start";
             this.butStartResponse.UseVisualStyleBackColor = true;
-            this.butStartResponse.Click += new System.EventHandler(this.butStartResponse_Click);
+            //this.butStartResponse.Click += new System.EventHandler(this.butStartResponse_Click);
             // 
             // tbSecretKey
             // 

@@ -8,13 +8,12 @@ using RestSharp;
 namespace Bitrix.Core
 {
 
-
     public class BitrixAPI
     {
-        RestClient RC = new RestClient();
+        public static RestClient RC = new RestClient();
         public static string API { get; set; }
-
-        public string SendRequest(string UserID, string SecretKey, string MethodApi, string Params)
+        
+        public static string SendRequest(string UserID, string SecretKey, string MethodApi, string Params)
         {
             var URL = API + UserID + "/" + SecretKey + "/" + MethodApi + "?" + Params; //+ Params;
             var Request = new RestRequest(URL);
