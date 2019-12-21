@@ -34,18 +34,19 @@ namespace Bitrix
         }
 
 
-
+        //Task 4581 to 4548
         private void _ButGetComments_Click(object sender, EventArgs e)
         {
-            //listBox2.Items.AddRange(BitrixCore.GetComments(tbUserID.Text, tbSecretKey.Text, TaskList));
-            var a = BitrixCore.GetComments(tbUserID.Text, tbSecretKey.Text, 7);
+            BitrixAPI.API = tbAPi.Text;
+            var a = BitrixCore.GetComments(tbUserID.Text, tbSecretKey.Text, 4581);
             CommentsList = a;
             listBox2.Items.AddRange(a);
         }
 
         private void SendComments_Click(object sender, EventArgs e)
         {
-            BitrixCore.SendComments(tbUserID.Text, tbSecretKey.Text, 21, CommentsList);
+            BitrixAPI.API = tbAPi.Text;
+            BitrixCore.SendComments(tbUserID.Text, tbSecretKey.Text, 4548, CommentsList);
         }
     }
 

@@ -31,7 +31,7 @@ namespace Bitrix.Core
                 var Temp = JsonConvert.DeserializeObject<BitrixComments>(Response);
                 string[] list = new string[Temp.result.Length];
                 for (int i = 0; i < Temp.result.Length; i++)
-                    list[i] = Temp.result[i].ID + " " + Temp.result[i].POST_MESSAGE;
+                    list[i] = Temp.result[i].POST_MESSAGE;
                 return list;
             }
             return null;
@@ -41,6 +41,15 @@ namespace Bitrix.Core
         {
             for (int i = 0; i < Comments.Length; i++)
                 API.SendRequest(_UserID, _SecretKey, "task.commentitem.add", $"TASKID={TaskID}&FIELDS[POST_MESSAGE]={Comments[i]}");
+        }
+
+
+        public void VisibleUI(Guna.UI.WinForms.GunaGroupBox grb, bool switcher)
+        {
+            foreach (Guna.UI.WinForms.GunaTextBox textBox in grb.Controls)
+            {
+                textBox.Enabled = switcher;
+            }
         }
 
     }

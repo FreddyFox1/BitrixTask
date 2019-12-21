@@ -12,7 +12,7 @@ namespace Bitrix.Core
     public class BitrixAPI
     {
         RestClient RC = new RestClient();
-        string API = "https://b24-djot23.bitrix24.ru/rest/";
+        public static string API { get; set; }
 
         public string SendRequest(string UserID, string SecretKey, string MethodApi, string Params)
         {

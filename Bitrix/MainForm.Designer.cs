@@ -45,6 +45,7 @@
             this._ButGetComments = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.SendComments = new System.Windows.Forms.Button();
+            this.tbAPi = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -76,7 +77,7 @@
             this.tbSecretKey.Name = "tbSecretKey";
             this.tbSecretKey.Size = new System.Drawing.Size(335, 20);
             this.tbSecretKey.TabIndex = 2;
-            this.tbSecretKey.Text = "3jkf78vpvm617lsj";
+            this.tbSecretKey.Text = "id0nzg4f5ptwyrvz";
             // 
             // tbUserID
             // 
@@ -84,7 +85,7 @@
             this.tbUserID.Name = "tbUserID";
             this.tbUserID.Size = new System.Drawing.Size(36, 20);
             this.tbUserID.TabIndex = 3;
-            this.tbUserID.Text = "1";
+            this.tbUserID.Text = "546";
             // 
             // label2
             // 
@@ -112,11 +113,12 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(586, 462);
+            this.tabControl1.Size = new System.Drawing.Size(591, 462);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tbAPi);
             this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.tbLimit);
@@ -130,7 +132,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(578, 436);
+            this.tabPage1.Size = new System.Drawing.Size(583, 436);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Список задач";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -140,7 +142,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(251, 96);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(161, 329);
+            this.listBox1.Size = new System.Drawing.Size(212, 329);
             this.listBox1.TabIndex = 11;
             // 
             // label4
@@ -175,7 +177,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(578, 436);
+            this.tabPage2.Size = new System.Drawing.Size(583, 436);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Получение комментариев";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -188,7 +190,7 @@
             this.listBox2.MultiColumn = true;
             this.listBox2.Name = "listBox2";
             this.listBox2.ScrollAlwaysVisible = true;
-            this.listBox2.Size = new System.Drawing.Size(486, 430);
+            this.listBox2.Size = new System.Drawing.Size(256, 430);
             this.listBox2.TabIndex = 1;
             // 
             // _ButGetComments
@@ -207,7 +209,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(578, 436);
+            this.tabPage3.Size = new System.Drawing.Size(583, 436);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Отправка комментариев";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -222,11 +224,19 @@
             this.SendComments.UseVisualStyleBackColor = true;
             this.SendComments.Click += new System.EventHandler(this.SendComments_Click);
             // 
+            // tbAPi
+            // 
+            this.tbAPi.Location = new System.Drawing.Point(351, 58);
+            this.tbAPi.Name = "tbAPi";
+            this.tbAPi.Size = new System.Drawing.Size(93, 20);
+            this.tbAPi.TabIndex = 12;
+            this.tbAPi.Text = "https://zavodform.bitrix24.ru/rest/";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 462);
+            this.ClientSize = new System.Drawing.Size(591, 462);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Bitrix";
@@ -258,6 +268,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button SendComments;
+        private System.Windows.Forms.TextBox tbAPi;
     }
 }
 
