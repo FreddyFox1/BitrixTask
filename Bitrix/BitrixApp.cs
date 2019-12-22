@@ -66,15 +66,12 @@ namespace Bitrix
             var Data = BitrixAPI.SendRequest(tbUserID.Text, tbSecretKey.Text, "tasks.task.list", "select=TITLE&ID");
             BitrixCore.GetTaskList(Data, DataGridTaskList);
             lbTaskCount.Visible = true;
-            lbTaskCount.Text = "Количество задач загружено: " + (DataGridTaskList.Rows.Count - 1).ToString();
+            lbTaskCount.Text = "Task count: " + (DataGridTaskList.Rows.Count - 1).ToString();
         }
 
         #endregion
 
         #region SecondPage
-
-        #endregion
-
         private void butGetComments_Click(object sender, EventArgs e)
         {
 
@@ -82,7 +79,7 @@ namespace Bitrix
             {
                 GetCommentsList();
             }
-            else MessageBox.Show("Заполните пустые поля!");
+            else MessageBox.Show("Fill null fields!");
         }
 
         private void GetCommentsList()
@@ -97,14 +94,14 @@ namespace Bitrix
                     this.Invoke(new ThreadStart(delegate
                     {
                         int k = Int32.Parse(DataGridTaskList[0, i].Value.ToString());
-                        
+
                         BitrixCore.GetComments(
                             tbUserID.Text,
                             tbSecretKey.Text,
                             k,
                             DataGridComments
                             );
-                        
+
                         pbGetComments.Value = i;
                     }));
 
@@ -113,5 +110,16 @@ namespace Bitrix
             }));
             thread.Start();
         }
+        #endregion
+
+        #region Third Page
+
+        #endregion
+        private void butLoadTaskFile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
