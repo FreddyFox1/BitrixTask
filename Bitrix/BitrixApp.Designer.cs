@@ -70,20 +70,21 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TextCommentary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaskTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPageSendComments = new System.Windows.Forms.TabPage();
             this.gunaGradientPanel2 = new Guna.UI.WinForms.GunaGradientPanel();
             this.pbSendComments = new Guna.UI.WinForms.GunaProgressBar();
             this.butLoadTaskFile = new Guna.UI.WinForms.GunaButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.gunaButton1 = new Guna.UI.WinForms.GunaButton();
+            this.butSendComments = new Guna.UI.WinForms.GunaButton();
             this.DataGridLocaTasks = new Guna.UI.WinForms.GunaDataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
-            this.gunaTextBox6 = new Guna.UI.WinForms.GunaTextBox();
-            this.gunaTextBox5 = new Guna.UI.WinForms.GunaTextBox();
+            this.grbLocalBitrix = new Guna.UI.WinForms.GunaGroupBox();
+            this.tbLocalSecretKey = new Guna.UI.WinForms.GunaTextBox();
+            this.tbLocalUserID = new Guna.UI.WinForms.GunaTextBox();
             this.butEditReceiver = new Guna.UI.WinForms.GunaButton();
-            this.gunaTextBox7 = new Guna.UI.WinForms.GunaTextBox();
+            this.tbLocalPortalAdress = new Guna.UI.WinForms.GunaTextBox();
             TabPageGetTasks = new System.Windows.Forms.TabPage();
             butLoadFile = new Guna.UI.WinForms.GunaButton();
             label1 = new System.Windows.Forms.Label();
@@ -104,7 +105,7 @@
             this.TabPageSendComments.SuspendLayout();
             this.gunaGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridLocaTasks)).BeginInit();
-            this.gunaGroupBox2.SuspendLayout();
+            this.grbLocalBitrix.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabPageGetTasks
@@ -593,7 +594,8 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.IDAuthor,
-            this.TextCommentary});
+            this.TextCommentary,
+            this.TaskTitle});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -658,6 +660,12 @@
             this.TextCommentary.Name = "TextCommentary";
             this.TextCommentary.ReadOnly = true;
             // 
+            // TaskTitle
+            // 
+            this.TaskTitle.HeaderText = "Title Task";
+            this.TaskTitle.Name = "TaskTitle";
+            this.TaskTitle.ReadOnly = true;
+            // 
             // TabPageSendComments
             // 
             this.TabPageSendComments.Controls.Add(this.gunaGradientPanel2);
@@ -676,9 +684,9 @@
             this.gunaGradientPanel2.Controls.Add(this.pbSendComments);
             this.gunaGradientPanel2.Controls.Add(this.butLoadTaskFile);
             this.gunaGradientPanel2.Controls.Add(this.label5);
-            this.gunaGradientPanel2.Controls.Add(this.gunaButton1);
+            this.gunaGradientPanel2.Controls.Add(this.butSendComments);
             this.gunaGradientPanel2.Controls.Add(this.DataGridLocaTasks);
-            this.gunaGradientPanel2.Controls.Add(this.gunaGroupBox2);
+            this.gunaGradientPanel2.Controls.Add(this.grbLocalBitrix);
             this.gunaGradientPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGradientPanel2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaGradientPanel2.GradientColor1 = System.Drawing.Color.Blue;
@@ -741,29 +749,30 @@
             this.label5.Text = "Task count: ";
             this.label5.Visible = false;
             // 
-            // gunaButton1
+            // butSendComments
             // 
-            this.gunaButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaButton1.AnimationSpeed = 0.03F;
-            this.gunaButton1.BaseColor = System.Drawing.Color.Silver;
-            this.gunaButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaButton1.ForeColor = System.Drawing.Color.White;
-            this.gunaButton1.Image = null;
-            this.gunaButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.gunaButton1.Location = new System.Drawing.Point(635, 330);
-            this.gunaButton1.Name = "gunaButton1";
-            this.gunaButton1.OnHoverBaseColor = System.Drawing.Color.Gray;
-            this.gunaButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaButton1.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaButton1.OnHoverImage = null;
-            this.gunaButton1.OnPressedColor = System.Drawing.Color.LightGray;
-            this.gunaButton1.Size = new System.Drawing.Size(104, 30);
-            this.gunaButton1.TabIndex = 11;
-            this.gunaButton1.Text = "Send Tasks";
-            this.gunaButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.butSendComments.AnimationHoverSpeed = 0.07F;
+            this.butSendComments.AnimationSpeed = 0.03F;
+            this.butSendComments.BaseColor = System.Drawing.Color.Silver;
+            this.butSendComments.BorderColor = System.Drawing.Color.Black;
+            this.butSendComments.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.butSendComments.FocusedColor = System.Drawing.Color.Empty;
+            this.butSendComments.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.butSendComments.ForeColor = System.Drawing.Color.White;
+            this.butSendComments.Image = null;
+            this.butSendComments.ImageSize = new System.Drawing.Size(20, 20);
+            this.butSendComments.Location = new System.Drawing.Point(635, 330);
+            this.butSendComments.Name = "butSendComments";
+            this.butSendComments.OnHoverBaseColor = System.Drawing.Color.Gray;
+            this.butSendComments.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.butSendComments.OnHoverForeColor = System.Drawing.Color.White;
+            this.butSendComments.OnHoverImage = null;
+            this.butSendComments.OnPressedColor = System.Drawing.Color.LightGray;
+            this.butSendComments.Size = new System.Drawing.Size(104, 30);
+            this.butSendComments.TabIndex = 11;
+            this.butSendComments.Text = "Send Tasks";
+            this.butSendComments.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.butSendComments.Click += new System.EventHandler(this.butSendComments_Click);
             // 
             // DataGridLocaTasks
             // 
@@ -836,60 +845,62 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Task Title";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // gunaGroupBox2
+            // grbLocalBitrix
             // 
-            this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox2.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox2.Controls.Add(this.gunaTextBox6);
-            this.gunaGroupBox2.Controls.Add(this.gunaTextBox5);
-            this.gunaGroupBox2.Controls.Add(this.butEditReceiver);
-            this.gunaGroupBox2.Controls.Add(label6);
-            this.gunaGroupBox2.Controls.Add(label8);
-            this.gunaGroupBox2.Controls.Add(this.gunaTextBox7);
-            this.gunaGroupBox2.Controls.Add(label7);
-            this.gunaGroupBox2.LineBottom = 3;
-            this.gunaGroupBox2.LineColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox2.LineLeft = 3;
-            this.gunaGroupBox2.LineRight = 3;
-            this.gunaGroupBox2.Location = new System.Drawing.Point(6, 12);
-            this.gunaGroupBox2.Name = "gunaGroupBox2";
-            this.gunaGroupBox2.Size = new System.Drawing.Size(330, 260);
-            this.gunaGroupBox2.TabIndex = 7;
-            this.gunaGroupBox2.Text = "API information of local storage";
-            this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 8);
+            this.grbLocalBitrix.BackColor = System.Drawing.Color.Transparent;
+            this.grbLocalBitrix.BaseColor = System.Drawing.Color.Transparent;
+            this.grbLocalBitrix.BorderColor = System.Drawing.Color.Gainsboro;
+            this.grbLocalBitrix.Controls.Add(this.tbLocalSecretKey);
+            this.grbLocalBitrix.Controls.Add(this.tbLocalUserID);
+            this.grbLocalBitrix.Controls.Add(this.butEditReceiver);
+            this.grbLocalBitrix.Controls.Add(label6);
+            this.grbLocalBitrix.Controls.Add(label8);
+            this.grbLocalBitrix.Controls.Add(this.tbLocalPortalAdress);
+            this.grbLocalBitrix.Controls.Add(label7);
+            this.grbLocalBitrix.LineBottom = 3;
+            this.grbLocalBitrix.LineColor = System.Drawing.Color.Gainsboro;
+            this.grbLocalBitrix.LineLeft = 3;
+            this.grbLocalBitrix.LineRight = 3;
+            this.grbLocalBitrix.Location = new System.Drawing.Point(6, 12);
+            this.grbLocalBitrix.Name = "grbLocalBitrix";
+            this.grbLocalBitrix.Size = new System.Drawing.Size(330, 260);
+            this.grbLocalBitrix.TabIndex = 7;
+            this.grbLocalBitrix.Text = "API information of local storage";
+            this.grbLocalBitrix.TextLocation = new System.Drawing.Point(10, 8);
             // 
-            // gunaTextBox6
+            // tbLocalSecretKey
             // 
-            this.gunaTextBox6.BaseColor = System.Drawing.Color.White;
-            this.gunaTextBox6.BorderColor = System.Drawing.Color.Silver;
-            this.gunaTextBox6.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.gunaTextBox6.Enabled = false;
-            this.gunaTextBox6.FocusedBaseColor = System.Drawing.Color.White;
-            this.gunaTextBox6.FocusedBorderColor = System.Drawing.Color.Black;
-            this.gunaTextBox6.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox6.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.gunaTextBox6.Location = new System.Drawing.Point(118, 87);
-            this.gunaTextBox6.Name = "gunaTextBox6";
-            this.gunaTextBox6.PasswordChar = '\0';
-            this.gunaTextBox6.Size = new System.Drawing.Size(200, 26);
-            this.gunaTextBox6.TabIndex = 4;
+            this.tbLocalSecretKey.BaseColor = System.Drawing.Color.White;
+            this.tbLocalSecretKey.BorderColor = System.Drawing.Color.Silver;
+            this.tbLocalSecretKey.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbLocalSecretKey.Enabled = false;
+            this.tbLocalSecretKey.FocusedBaseColor = System.Drawing.Color.White;
+            this.tbLocalSecretKey.FocusedBorderColor = System.Drawing.Color.Black;
+            this.tbLocalSecretKey.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbLocalSecretKey.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.tbLocalSecretKey.Location = new System.Drawing.Point(118, 87);
+            this.tbLocalSecretKey.Name = "tbLocalSecretKey";
+            this.tbLocalSecretKey.PasswordChar = '\0';
+            this.tbLocalSecretKey.Size = new System.Drawing.Size(200, 26);
+            this.tbLocalSecretKey.TabIndex = 4;
+            this.tbLocalSecretKey.Text = "3jkf78vpvm617lsj";
             // 
-            // gunaTextBox5
+            // tbLocalUserID
             // 
-            this.gunaTextBox5.BaseColor = System.Drawing.Color.White;
-            this.gunaTextBox5.BorderColor = System.Drawing.Color.Silver;
-            this.gunaTextBox5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.gunaTextBox5.Enabled = false;
-            this.gunaTextBox5.FocusedBaseColor = System.Drawing.Color.White;
-            this.gunaTextBox5.FocusedBorderColor = System.Drawing.Color.Black;
-            this.gunaTextBox5.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaTextBox5.Location = new System.Drawing.Point(118, 130);
-            this.gunaTextBox5.Name = "gunaTextBox5";
-            this.gunaTextBox5.PasswordChar = '\0';
-            this.gunaTextBox5.Size = new System.Drawing.Size(200, 26);
-            this.gunaTextBox5.TabIndex = 6;
+            this.tbLocalUserID.BaseColor = System.Drawing.Color.White;
+            this.tbLocalUserID.BorderColor = System.Drawing.Color.Silver;
+            this.tbLocalUserID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbLocalUserID.Enabled = false;
+            this.tbLocalUserID.FocusedBaseColor = System.Drawing.Color.White;
+            this.tbLocalUserID.FocusedBorderColor = System.Drawing.Color.Black;
+            this.tbLocalUserID.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbLocalUserID.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbLocalUserID.Location = new System.Drawing.Point(118, 130);
+            this.tbLocalUserID.Name = "tbLocalUserID";
+            this.tbLocalUserID.PasswordChar = '\0';
+            this.tbLocalUserID.Size = new System.Drawing.Size(200, 26);
+            this.tbLocalUserID.TabIndex = 6;
+            this.tbLocalUserID.Text = "1";
             // 
             // butEditReceiver
             // 
@@ -914,22 +925,24 @@
             this.butEditReceiver.TabIndex = 0;
             this.butEditReceiver.Text = "Edit";
             this.butEditReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.butEditReceiver.Click += new System.EventHandler(this.butEditReceiver_ClickSave);
             // 
-            // gunaTextBox7
+            // tbLocalPortalAdress
             // 
-            this.gunaTextBox7.BaseColor = System.Drawing.Color.White;
-            this.gunaTextBox7.BorderColor = System.Drawing.Color.Silver;
-            this.gunaTextBox7.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.gunaTextBox7.Enabled = false;
-            this.gunaTextBox7.FocusedBaseColor = System.Drawing.Color.White;
-            this.gunaTextBox7.FocusedBorderColor = System.Drawing.Color.Black;
-            this.gunaTextBox7.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.gunaTextBox7.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaTextBox7.Location = new System.Drawing.Point(118, 46);
-            this.gunaTextBox7.Name = "gunaTextBox7";
-            this.gunaTextBox7.PasswordChar = '\0';
-            this.gunaTextBox7.Size = new System.Drawing.Size(200, 26);
-            this.gunaTextBox7.TabIndex = 2;
+            this.tbLocalPortalAdress.BaseColor = System.Drawing.Color.White;
+            this.tbLocalPortalAdress.BorderColor = System.Drawing.Color.Silver;
+            this.tbLocalPortalAdress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbLocalPortalAdress.Enabled = false;
+            this.tbLocalPortalAdress.FocusedBaseColor = System.Drawing.Color.White;
+            this.tbLocalPortalAdress.FocusedBorderColor = System.Drawing.Color.Black;
+            this.tbLocalPortalAdress.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.tbLocalPortalAdress.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbLocalPortalAdress.Location = new System.Drawing.Point(118, 46);
+            this.tbLocalPortalAdress.Name = "tbLocalPortalAdress";
+            this.tbLocalPortalAdress.PasswordChar = '\0';
+            this.tbLocalPortalAdress.Size = new System.Drawing.Size(200, 26);
+            this.tbLocalPortalAdress.TabIndex = 2;
+            this.tbLocalPortalAdress.Text = "https://b24-djot23.bitrix24.ru/rest/";
             // 
             // BitrixApp
             // 
@@ -937,6 +950,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 415);
             this.Controls.Add(this.TabControl);
+            this.MaximizeBox = false;
             this.Name = "BitrixApp";
             this.Text = "BitrixTransfer";
             TabPageGetTasks.ResumeLayout(false);
@@ -953,8 +967,8 @@
             this.gunaGradientPanel2.ResumeLayout(false);
             this.gunaGradientPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridLocaTasks)).EndInit();
-            this.gunaGroupBox2.ResumeLayout(false);
-            this.gunaGroupBox2.PerformLayout();
+            this.grbLocalBitrix.ResumeLayout(false);
+            this.grbLocalBitrix.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -967,9 +981,9 @@
         private Guna.UI.WinForms.GunaDataGridView DataGridComments;
         private System.Windows.Forms.TabPage TabPageSendComments;
         private Guna.UI.WinForms.GunaGradientPanel gunaGradientPanel2;
-        private Guna.UI.WinForms.GunaTextBox gunaTextBox5;
-        private Guna.UI.WinForms.GunaTextBox gunaTextBox6;
-        private Guna.UI.WinForms.GunaTextBox gunaTextBox7;
+        private Guna.UI.WinForms.GunaTextBox tbLocalUserID;
+        private Guna.UI.WinForms.GunaTextBox tbLocalSecretKey;
+        private Guna.UI.WinForms.GunaTextBox tbLocalPortalAdress;
         private Guna.UI.WinForms.GunaButton butEditReceiver;
         private Guna.UI.WinForms.GunaGradientPanel MainFormBackground;
         private Guna.UI.WinForms.GunaDataGridView DataGridCloudTaskList;
@@ -982,21 +996,22 @@
         private Guna.UI.WinForms.GunaButton butEditFirstPortal;
         private Guna.UI.WinForms.GunaButton butGetTaskList;
         private Guna.UI.WinForms.GunaGroupBox grbCloudBitrix;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
+        private Guna.UI.WinForms.GunaGroupBox grbLocalBitrix;
         private System.Windows.Forms.Label lbTaskCount;
         private Guna.UI.WinForms.GunaButton butGetComments;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDAuthor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TextCommentary;
         private Guna.UI.WinForms.GunaProgressBar pbGetComments;
         private Guna.UI.WinForms.GunaProgressBar pbSendComments;
         private Guna.UI.WinForms.GunaButton butLoadTaskFile;
         private System.Windows.Forms.Label label5;
-        private Guna.UI.WinForms.GunaButton gunaButton1;
+        private Guna.UI.WinForms.GunaButton butSendComments;
         private Guna.UI.WinForms.GunaDataGridView DataGridLocaTasks;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Guna.UI.WinForms.GunaProgressBar pbCloudTasks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDAuthor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TextCommentary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TaskTitle;
     }
 }

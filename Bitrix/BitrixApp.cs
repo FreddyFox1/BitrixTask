@@ -44,11 +44,18 @@ namespace Bitrix
 
         private void butGetTaskList_Click(object sender, EventArgs e)
         {
-            if (CheckTextBoxes(grbCloudBitrix))
+            try
             {
-                GetTaskList();
+                if (CheckTextBoxes(grbCloudBitrix))
+                {
+                    GetTaskList();
+                }
+                else MessageBox.Show("Заполните пустые поля!");
             }
-            else MessageBox.Show("Заполните пустые поля!");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка 404.");
+            }
         }
 
         private bool CheckTextBoxes(Guna.UI.WinForms.GunaGroupBox grb)
@@ -75,7 +82,6 @@ namespace Bitrix
         #region SecondPage
         private void butGetComments_Click(object sender, EventArgs e)
         {
-
             if (CheckTextBoxes(grbCloudBitrix))
             {
                 GetCommentsList();
@@ -94,15 +100,9 @@ namespace Bitrix
                 {
                     this.Invoke(new ThreadStart(delegate
                     {
-                        int k = Int32.Parse(DataGridCloudTaskList[0, i].Value.ToString());
-
-                        BitrixCore.GetComments(
-                            tbUserID.Text,
-                            tbSecretKey.Text,
-                            k,
-                            DataGridComments
-                            );
-
+                        int TaskID = Int32.Parse(DataGridCloudTaskList[0, i].Value.ToString());
+                        string TaskTitle = DataGridCloudTaskList[1, i].Value.ToString();
+                        BitrixCore.GetComments(tbUserID.Text, tbSecretKey.Text, TaskID, TaskTitle, DataGridComments);
                         pbGetComments.Value = i;
                     }));
 
@@ -114,10 +114,9 @@ namespace Bitrix
         #endregion
 
         #region Third Page
-
-        #endregion
         private void butLoadTaskFile_Click(object sender, EventArgs e)
         {
+
             GetTasksFile(DataGridLocaTasks, pbSendComments);
         }
 
@@ -127,7 +126,10 @@ namespace Bitrix
             {
                 opf.Title = "Select *.txt files with tasks";
                 if (opf.ShowDialog() == DialogResult.OK)
+                {
+                    butSendComments.Enabled = true;
                     LoadTaskFile(opf.FileName, gridView, pb);
+                }
             }
         }
 
@@ -150,22 +152,57 @@ namespace Bitrix
                             string[] Temp = line.Split(' ');
                             Grid.Rows.Add(Temp[0], Temp[1]);
                             pb.Value = i;
+                            Grid.Update();
                             i++;
-
                         }
                     }
                 }));
                 pb.Value = Grid.Rows.Count;
-                MessageBox.Show("All Done!");
+                MessageBox.Show("All Done!  " + Grid[0, 0].Value.ToString());
+                ;
             }));
             thread.Start();
         }
 
         private void butLoadFile_Click(object sender, EventArgs e)
         {
+            DataGridCloudTaskList.Rows.Clear();
+            DataGridComments.Rows.Clear();
             GetTasksFile(DataGridCloudTaskList, pbCloudTasks);
         }
 
+        private void butSendComments_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BitrixAPI.API = tbLocalPortalAdress.Text;
+                BitrixCore.SendComments(tbLocalPortalAdress.Text, tbLocalSecretKey.Text, tbLocalUserID.Text, DataGridComments, DataGridLocaTasks);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Заполните список задач!" + ex.Message.ToString());
+            }
+        }
+
+        private void butEditReceiver_ClickEdit(object sender, EventArgs e)
+        {
+            BitrixCore.VisibleUI(grbLocalBitrix, true);
+            butEditReceiver.Text = "Save";
+            butEditReceiver.BaseColor = Color.Red;
+            butEditReceiver.Click -= butEditReceiver_ClickEdit;
+            butEditReceiver.Click += butEditReceiver_ClickSave;
+        }
+
+        private void butEditReceiver_ClickSave(object sender, EventArgs e)
+        {
+            BitrixCore.VisibleUI(grbLocalBitrix, false);
+            butEditReceiver.Text = "Edit";
+            butEditReceiver.BaseColor = Color.Silver;
+            butEditReceiver.Click -= butEditReceiver_ClickSave;
+            butEditReceiver.Click += butEditReceiver_ClickEdit;
+
+        }
+        #endregion
     }
 }
 
