@@ -158,7 +158,7 @@ namespace Bitrix
                     }
                 }));
                 pb.Value = Grid.Rows.Count;
-                MessageBox.Show("All Done!  " + Grid[0, 0].Value.ToString());
+                MessageBox.Show("All Done!");
                 ;
             }));
             thread.Start();

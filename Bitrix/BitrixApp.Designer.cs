@@ -152,6 +152,7 @@
             this.pbCloudTasks.ProgressMinColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.pbCloudTasks.Size = new System.Drawing.Size(307, 23);
             this.pbCloudTasks.TabIndex = 18;
+            this.pbCloudTasks.Value = 100;
             // 
             // butLoadFile
             // 
